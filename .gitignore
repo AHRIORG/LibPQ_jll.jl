@@ -1,3 +1,4 @@
 override/
 .env
 .DS_Store
+Manifest.toml
