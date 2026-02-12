@@ -1,4 +1,4 @@
-# `LibPQ_jll.jl` (v16.8.0+0)
+# `LibPQ_jll.jl` (v18.1.0+1)
 
 [![deps](https://juliahub.com/docs/LibPQ_jll/deps.svg)](https://juliahub.com/ui/Packages/General/LibPQ_jll/)
 
@@ -13,6 +13,96 @@ If you have any issue, please report it to the Yggdrasil [bug tracker](https://g
 ## Documentation
 
 For more details about JLL packages and how to use them, see `BinaryBuilder.jl` [documentation](https://docs.binarybuilder.org/stable/jll/).
+
+## Using this fork from `LibPQ.jl`
+
+Run the shell one-liners below from your `LibPQ.jl` project directory (the directory containing `Project.toml`).
+
+From your `LibPQ.jl` environment, point `LibPQ_jll` to this fork:
+
+```julia
+using Pkg
+
+# Track the fork branch (mutable)
+Pkg.develop(PackageSpec(name="LibPQ_jll", url="https://github.com/AHRIORG/LibPQ_jll.jl", rev="main"))
+Pkg.resolve()
+Pkg.test("LibPQ")
+```
+
+One-liner:
+
+```bash
+julia --project=. -e 'using Pkg; Pkg.develop(PackageSpec(name="LibPQ_jll", url="https://github.com/AHRIORG/LibPQ_jll.jl", rev="main")); Pkg.resolve(); Pkg.test("LibPQ")'
+```
+
+After publishing release tag `LibPQ-v18.1.0+1`, you can pin to the tag:
+
+```julia
+using Pkg
+
+# Track the fork tag (immutable release)
+Pkg.add(PackageSpec(name="LibPQ_jll", url="https://github.com/AHRIORG/LibPQ_jll.jl", rev="LibPQ-v18.1.0+1"))
+Pkg.resolve()
+Pkg.test("LibPQ")
+```
+
+One-liner:
+
+```bash
+julia --project=. -e 'using Pkg; Pkg.add(PackageSpec(name="LibPQ_jll", url="https://github.com/AHRIORG/LibPQ_jll.jl", rev="LibPQ-v18.1.0+1")); Pkg.resolve(); Pkg.test("LibPQ")'
+```
+
+To switch back to upstream `LibPQ_jll` from General:
+
+```julia
+using Pkg
+
+Pkg.free("LibPQ_jll")
+Pkg.resolve()
+Pkg.test("LibPQ")
+```
+
+One-liner:
+
+```bash
+julia --project=. -e 'using Pkg; Pkg.free("LibPQ_jll"); Pkg.resolve(); Pkg.test("LibPQ")'
+```
+
+For fully reproducible local pinning by commit SHA:
+
+```julia
+using Pkg
+
+# Replace with the exact fork commit you want to lock to
+Pkg.add(PackageSpec(name="LibPQ_jll", url="https://github.com/AHRIORG/LibPQ_jll.jl", rev="<commit-sha>"))
+Pkg.pin("LibPQ_jll")
+Pkg.resolve()
+Pkg.test("LibPQ")
+```
+
+One-liner:
+
+```bash
+julia --project=. -e 'using Pkg; Pkg.add(PackageSpec(name="LibPQ_jll", url="https://github.com/AHRIORG/LibPQ_jll.jl", rev="<commit-sha>")); Pkg.pin("LibPQ_jll"); Pkg.resolve(); Pkg.test("LibPQ")'
+```
+
+To unpin and return to upstream releases:
+
+```julia
+using Pkg
+
+Pkg.free("LibPQ_jll")
+Pkg.rm("LibPQ_jll")
+Pkg.add("LibPQ_jll")
+Pkg.resolve()
+Pkg.test("LibPQ")
+```
+
+One-liner:
+
+```bash
+julia --project=. -e 'using Pkg; Pkg.free("LibPQ_jll"); Pkg.rm("LibPQ_jll"); Pkg.add("LibPQ_jll"); Pkg.resolve(); Pkg.test("LibPQ")'
+```
 
 ## Sources
 
